@@ -19,7 +19,7 @@
 	        <div class="row">    
 	            <div>
 					<form method="GET" class="form-inline" action="/wa/historicos" th:object="${filtro}">
-					    <input class="form-control mr-sm-2" type="search" placeholder="Funcionário" aria-label="Pesquisar" autofocus="autofocus" th:field="*{funcionario}">
+					    <input class="form-control mr-sm-2" type="search" placeholder="Colaborador" aria-label="Pesquisar" autofocus="autofocus" th:field="*{funcionario}">
 					    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
 				  	</form>
 	            </div>
@@ -31,10 +31,10 @@
 			<table class="table table-hover table-striped" id="tabela-funcionarios">
 				<thead>
 					<tr>
-						<th class="text-center">Funcionário</th>
+						<th class="text-center">Colaborador</th>
 						<th class="text-center">Cliente</th>						
 						<th class="text-center">Código Vaga</th>
-						<th class="text-center">GFT</th>
+						<th class="text-center">Empresa</th>
 						<th class="text-center">Início WA</th>
 						<th class="text-center">Início Alocação</th>
 					</tr>
