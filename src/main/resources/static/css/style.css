@@ -1,0 +1,57 @@
+.css-navbar-brand{
+	padding: 10px;
+}
+
+.css-new{
+	float:right;
+}
+
+.css-new-header{
+	float: left;
+	padding: 10px;
+}
+
+.alert {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;		
+}
+
+
+.footer-container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;  
+}
+
+.footer {
+  background-color: #f5f5f5;
+}
+
+.tecnologia-item{
+	display: inline-block;
+}
+
+
+.css-alocar {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.css-img-card{
+	max-width:150px;
+    max-height:100px;
+    width: auto;
+    height: auto;
+}
+
+.css-card-alocacao{
+	margin-left: 50px;
+	margin-right: 0px;
+	margin-top: 40px;
+	padding: 10px;
+}
+.css-campo-alocacao{
+	font-weight: bold;
+}

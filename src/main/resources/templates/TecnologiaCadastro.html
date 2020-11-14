@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{LayoutPadrao}">
+	
+<head>	
+	<title>Tecnologia Cadastro</title>	
+</head>
+	
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/wa/tecnologias/cadastrar" th:object="${tecnologia}">
+		<div th:replace="MensagemGeral"></div>
+		<div th:replace="MensagemErro"></div>
+		
+		<div class="card">
+	    	<div class="card-header" >
+	       		<div class="row">
+		            <div class="clearfix">
+		            	<h2 class="css-new-header">Cadastrar Tecnologia</h2>            	
+		            </div>
+	            </div>
+	    	</div>
+
+			<div class="card-body card-bordered">
+				<input type="hidden" name="id" th:field="*{id}" />
+				
+				<div class="form-group row ">
+					<label for="nome" class="col-sm-1 col-form-label" >Nome</label>
+					<div class="col-sm-3 ">
+						<input type="text" class="form-control" th:classappend="${#fields.hasErrors('nome')} ? is-invalid" 
+						id="nome" name="nome" th:field="*{nome}">
+					</div>
+				</div>
+
+				<div class="offset-sm-2">
+					<div class="col-sm-3 ">
+						<button type="submit" class="btn btn-primary col-sm-6 ">Salvar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{LayoutPadrao}">
+	
+<head>	
+	<title>Histórico</title>	
+</head>
+	
+<section layout:fragment="conteudo">
+	<div class="card">
+       <div class="card-header" >
+       		<div class="row">
+	            <div class="clearfix">
+	            	<h2 class="css-new-header">Histórico de Alocação</h2>            	
+	            </div>
+	        </div>
+	        <div class="row">    
+	            <div>
+					<form method="GET" class="form-inline" action="/wa/historicos" th:object="${filtro}">
+					    <input class="form-control mr-sm-2" type="search" placeholder="Funcionário" aria-label="Pesquisar" autofocus="autofocus" th:field="*{funcionario}">
+					    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+				  	</form>
+	            </div>
+	            
+            </div>
+       </div>
+
+		<div class="card-body card-bordered">
+			<table class="table table-hover table-striped" id="tabela-funcionarios">
+				<thead>
+					<tr>
+						<th class="text-center">Funcionário</th>
+						<th class="text-center">Cliente</th>						
+						<th class="text-center">Código Vaga</th>
+						<th class="text-center">GFT</th>
+						<th class="text-center">Início WA</th>
+						<th class="text-center">Início Alocação</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="historico : ${historicos}">
+						<td class="text-center"	th:text="${historico.funcionario}"></td>
+						<td class="text-center" th:text="${historico.cliente}"></td>						
+						<td class="text-center" th:text="${historico.codigoVaga}"></td>						
+						<td class="text-center" th:text="${historico.gft}"></td>
+						<td class="text-center" th:text="${{historico.inicioWa}}"></td>
+						<td class="text-center" th:text="${{historico.inicioAlocacao}}"></td>
+					</tr>
+					<tr>
+						<td colspan="12" th:if="${#lists.isEmpty(historicos)}">Nenhum funcionário em WA foi alocado em vaga.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+</html>

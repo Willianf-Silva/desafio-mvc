@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{LayoutPadrao}">
+	
+<head>	
+	<title>Vaga Cadastro</title>	
+</head>
+	
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/wa/vagas/cadastrar" th:object="${vaga}">
+		<div th:replace="MensagemGeral"></div>
+		<div th:replace="MensagemErro"></div>
+		  
+		  
+		<div class="card">
+	    	<div class="card-header" >
+	       		<div class="row">
+		            <div class="clearfix">
+		            	<h2 class="css-new-header">Cadastrar Vaga</h2>            	
+		            </div>
+	            </div>
+	    	</div>
+
+			<div class="card-body card-bordered">
+				<input type="hidden" name="id" th:field="*{id}" />
+				
+				<div class="form-group row ">
+					<label for="projeto" class="col-sm-1 col-form-label">Projeto</label>
+					<div class="col-sm-3 ">
+						<input type="text" class="form-control" th:classappend="${#fields.hasErrors('projeto')} ? is-invalid" id="projeto" name="projeto" th:field="*{projeto}">
+					</div>
+				</div>
+				
+				<div class="form-group row ">
+					<label for="descricaoVaga" class="col-sm-1 col-form-label">Descrição</label>
+					<div class="col-sm-3 ">
+						<input type="text" class="form-control" th:classappend="${#fields.hasErrors('descricaoVaga')} ? is-invalid" id="descricaoVaga" name="descricaoVaga" th:field="*{descricaoVaga}">
+					</div>
+				</div>
+				
+				<div class="form-group row ">
+					<label for="aberturaVaga" class="col-sm-1 col-form-label">Abertura da Vaga</label>
+					<div class="col-sm-1 ">
+						<input type="text" class="form-control" th:classappend="${#fields.hasErrors('aberturaVaga')} ? is-invalid" id="aberturaVaga" name="aberturaVaga" th:field="*{aberturaVaga}"
+						data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR" data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom">
+					</div>
+				</div>
+
+				<div class="form-group row ">
+					<label for="tecnologias" class="col-sm-1 col-form-label">Tecnologias</label>
+					<div class="form-check" th:each="tecnologia : ${todasTecnologiasCadastradas}">
+					    <input type="checkbox" class="form-check-input" id="tecnologias" name="tecnologias"
+					    th:value="${tecnologia.id}" th:text="${tecnologia.nome}" th:selected="${tecnologia.id}"
+					    th:field="*{tecnologias}">
+					</div>
+				</div>
+								
+				<div class="form-group row ">
+					<label for="qtdVaga" class="col-sm-1 col-form-label">Quantidade de Vagas</label>
+					<div class="col-sm-3 ">
+						<select class="form-control" th:field="*{qtdVaga}">
+							<option th:each="i : ${#numbers.sequence(1, 99)}" 
+									th:value="${i}" 
+									th:text="${i}" 
+									th:selected="${i}"></option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row ">
+					<label for="codigoVaga" class="col-sm-1 col-form-label" >Código da Vaga</label>
+					<div class="col-sm-1 ">
+						<input type="text" class="form-control" th:classappend="${#fields.hasErrors('codigoVaga')} ? is-invalid" id="codigoVaga" name="codigoVaga" th:field="*{codigoVaga}">
+					</div>
+				</div>
+
+				<div class="offset-sm-2">
+					<div class="col-sm-3 ">
+						<button type="submit" class="btn btn-primary col-sm-6 ">Salvar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+</html>

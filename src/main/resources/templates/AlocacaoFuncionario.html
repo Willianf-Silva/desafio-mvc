@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{LayoutPadrao}">
+	
+<head>	
+	<title>Alocação Funcionário</title>	
+</head>
+
+<section layout:fragment="conteudo">
+<form class="form-horizontal" action="#" th:action="@{/alocar}" method="POST" th:object="${funcionario}">
+		<div class="card">
+			<div class="card-header">
+				<div class="clearfix">
+					<h2 class="css-new-header">Selecionar funcionário</h2>
+				</div>
+			</div>
+			<div class="card-body card-bordered">
+				<div class="container-fluid" >
+					<div class="row">
+						<div class="card css-card-alocacao col-xs-12 col-sm-6 col-md-4 col-lg-2" th:each="func : ${funcionarios}">
+							<div class="card-body">	
+								<div>
+				    				<a class="btn btn-link btn-xs" th:href="@{/wa/alocar/vaga/{id}/{idd}(id=${vaga.id}, idd=${func.id})}" 
+				    					title="Alocar na vaga" rel="tooltip" data-placement="top">
+						    			<span>
+						    				<h2 class="card-title" th:text="${func.nome}">Nome</h2>				    			
+						    			</span>
+						    		</a>
+						    	</div>
+						    				
+			    				<div class="row ">
+									<label class="css-campo-alocacao">Cargo:</label>
+									<div class="col-sm-9">
+										<p th:text="${func.cargo}"></p>
+									</div>
+								</div>
+								
+			    				<div class="row ">
+									<label class="css-campo-alocacao">Empresa:</label>
+									<div class="col-sm-9">
+										<p th:text="${func.gft.nome}"></p>
+									</div>
+								</div>								
+
+			    				<div class="row ">
+									<label class="css-campo-alocacao">Matrícula:</label>
+									<div class="col-sm-9">
+										<p th:text="${func.matricula}"></p>
+									</div>
+								</div>	
+											
+			    				<div class="row ">
+									<label class="css-campo-alocacao">Inicio WA:</label>
+									<div class="col-sm-9">
+										<p th:text="${{func.inicioWa}}"></p>
+									</div>
+								</div>
+																								
+								<div class="row">
+									<label class="css-campo-alocacao">Tecnologias Recomendadas:</label>
+								</div>
+								<div>
+							    	<ul class="list-group list-group-flush">
+							    		<li class="list-group-item">
+								    		<div class="tecnologia-item" th:each="tecnologia : ${func.tecnologias}">
+												<img class="rounded" th:src="${tecnologia.localImagem}">
+											</div>
+							    		</li>
+							    	</ul>
+						    	</div>
+							</div>
+						</div>
+						<div>
+							<label th:if="${#lists.isEmpty(funcionarios)}">Nenhum funcionário em WA</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+</html>
